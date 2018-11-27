@@ -412,7 +412,7 @@ public class PlayGamesServices extends CordovaPlugin implements GameHelperListen
             @Override
             public void run() {
                 if (gameHelper.isSignedIn()) {
-                    Games.Achievements.increment(gameHelper.getApiClient(), options.optString("achievementId"), options.optInt("numSteps"));
+                    Games.Achievements.increment(gameHelper.getApiClient(), options.optString("achievementId"), options.optInt(1));
                     callbackContext.success();
                 } else {
                     Log.w(LOGTAG, "executeIncrementAchievement: not yet signed in");
@@ -429,7 +429,7 @@ public class PlayGamesServices extends CordovaPlugin implements GameHelperListen
             @Override
             public void run() {
                 if (gameHelper.isSignedIn()) {
-                    PendingResult<Achievements.UpdateAchievementResult> result = Games.Achievements.incrementImmediate(gameHelper.getApiClient(), options.optString("achievementId"), options.optInt("numSteps"));
+                    PendingResult<Achievements.UpdateAchievementResult> result = Games.Achievements.incrementImmediate(gameHelper.getApiClient(), options.optString("achievementId"), options.optInt(1));
                     result.setResultCallback(new ResultCallback<Achievements.UpdateAchievementResult>() {
                             @Override
                             public void onResult(Achievements.UpdateAchievementResult achievementResult) {
